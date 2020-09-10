@@ -1,17 +1,18 @@
 import React from 'react';
-import {StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, Text, View ,Image} from 'react-native';
 
 import {createMaterialTopNavigator } from 'react-navigation';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import {createTopTabNavigator} from 'react-navigation-tabs';
+import {createBottomTabNavigator} from 'react-navigation-tabs';
 
 import WriteScreen from './screens/WriteScreen';
 import ReadScreen from './screens/ReadScreen';
+import HomeScreen from './screens/HomeScreen';
 
 export default class App extends React.Component {
   render(){
     return (
-        <AppContainer />
+        <AppContainer/>
         
     );
   }
@@ -24,15 +25,42 @@ const MaterialTopNavigator = createMaterialTopNavigator({
 });
 */
 
+const TabNavigator = createBottomTabNavigator({
+  Write: {screen: WriteScreen},
+  Read: {screen: ReadScreen},
+},
+{
+  defaultNavigationOptions: ({navigation})=>({
+    tabBarIcon: ()=>{
+      const routeName = navigation.state.routeName;
+      console.log(routeName)
+      if(routeName === "Read"){
+        return(
+          <Image
+          source={require('./assets/read.png')}
+          style={{width:50, height:30}}/>
+        ) 
+      }
+      else if(routeName === "Write"){
+        return(
+          <Image
+          source={require('./assets/write.png')}
+          style={{width:50, height:40}}/>
+          )
+      }
+    }
+  })
+}
+);
+
 const switchNavigator = createSwitchNavigator({
-  WriteScreen:{screen:WriteScreen},
-  ReadScreen:{screen:ReadScreen},
+  TabNavigator:{screen:TabNavigator},
+  HomeScreen:{screen:HomeScreen}
 })
 
 const AppContainer =  createAppContainer(switchNavigator);
-//const AppContainer = createAppContainer(TabNavigator);
 
-const styles = StyleSheet.create({
+const styling = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'yellow',

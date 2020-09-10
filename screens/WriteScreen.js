@@ -1,6 +1,5 @@
 import React from 'react';
 import {Text, View, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
-import { color } from 'react-native-reanimated';
 
 export default class WriteScreen extends React.Component{
     render(){
@@ -27,8 +26,10 @@ const styling = StyleSheet.create({
         fontSize: 18,
         margin:10,
         paddingLeft:10,
-        color: 'black',
-        alignSelf: 'center'
+        color: 'white',
+        alignSelf: 'center',
+        fontFamily: 'georgia',
+        borderColor:'white'
     },
     submit:{
         width: 100,
@@ -36,7 +37,7 @@ const styling = StyleSheet.create({
         borderWidth: 1,
         margin:10,
         paddingLeft:10,
-        backgroundColor:'red',
+        backgroundColor:'#3ED716',
         flex: 1,
         alignSelf: 'center',
         justifyContent: 'center',
@@ -51,11 +52,11 @@ const styling = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'center',
         fontSize: 40,
-        fontStyle: 'italic',
+        fontStyle:'italic',
         fontFamily: 'comfortaa',
-        color: 'black'
+        color: 'white'
     },
     bg:{
-        backgroundColor:'#FFBAAC'
+        backgroundColor:'#ad0945'
     }
 })
